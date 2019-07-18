@@ -12,6 +12,7 @@ namespace NetCampWeb.Controllers
     {
         public IActionResult Index()
         {
+
             return View();
         }
 

@@ -19,6 +19,7 @@ namespace NetCampWeb
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseIISIntegration() // Serverda kodun çalışması için            
                 .UseStartup<Startup>();
     }
 }

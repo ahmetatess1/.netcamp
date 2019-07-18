@@ -1,0 +1,34 @@
+﻿@model Ogrenci
+@{
+    ViewData["Title"] = "Öğrenci Ekleme Formu";
+}
+
+    <h1>Öğrenci Formu <a class="btn btn-info btn-float-right" asp-controller="Ogrenci" asp-action="List">Geri</a></h1>
+
+    <form asp-controller="Ogrenci" asp-action="Insert">
+        <div class="form-group">
+            <label>Kullanıcı Adı</label>
+            @Html.TextBoxFor(q => q.KullaniciAdi, new { @class = "form-control" })
+            <!--<input id="KullaniciAdi" name="KullaniciAdi" class="form-control" required />  Htmltag olarak almak-->
+        </div>
+        <div class="form-group">
+            <label>Parola</label>
+            @Html.PasswordFor(q => q.Parola, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Adı</label>
+            @Html.TextBoxFor(q => q.Adi, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>SoyAdı</label>
+            @Html.TextBoxFor(q => q.Soyadi, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Yaşı</label>
+            @Html.TextBoxFor(q => q.Yasi, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+        <p>@ViewBag.Error</p>
+
+    </form>

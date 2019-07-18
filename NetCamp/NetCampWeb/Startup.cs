@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NetCampWeb.Models.Services;
 
 namespace NetCampWeb
 {
@@ -31,6 +33,14 @@ namespace NetCampWeb
             });
 
 
+            services.AddSingleton(new OgrenciService());
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                 {
+                     options.Cookie.HttpOnly = true;
+                     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                     options.LoginPath = "/Login/Index/";
+                 });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -48,6 +58,7 @@ namespace NetCampWeb
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
