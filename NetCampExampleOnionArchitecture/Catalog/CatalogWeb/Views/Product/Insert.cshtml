@@ -1,0 +1,32 @@
+﻿@model Catalog.DataAccess.Product
+@{
+    ViewData["Title"] = "Marka Ekleme Formu";
+}
+
+<h1>Ürün Ekleme Formu <a class="btn btn-info btn-float-right" asp-controller="Product" asp-action="List">Geri</a></h1>
+
+<form asp-controller="Product" asp-action="Insert">
+    <div class="form-group">
+        <label>Ürün Adı</label>
+        @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Ürün Açıklaması</label>
+        @Html.TextBoxFor(q => q.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Ürün Resim Linki</label>
+        @Html.TextBoxFor(q => q.Image, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Marka Adı</label>
+        @Html.DropDownListFor(q=>q.BrandId, new SelectList(ViewBag.Markalar, "Value", "Text"), "Marka Seçiniz", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Kategori Adı</label>
+        @Html.DropDownListFor(q=>q.CategoryId, new SelectList(ViewBag.Kategoriler, "Value", "Text"), "Kategori Seçiniz", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <p>@ViewBag.Error</p>
+
+</form>

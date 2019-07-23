@@ -1,0 +1,18 @@
+﻿@model Catalog.DataAccess.Brand
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Marka Formu Güncelleme <a class="btn btn-info btn-float-right" asp-controller="Brand" asp-action="List">Geri</a></h1>
+
+<form asp-controller="Brand" asp-action="Update">
+    @Html.HiddenFor(q => q.Id)
+    <div class="form-group">
+        <label>Marka Adı</label>
+        @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <p>@ViewBag.Error</p>
+
+</form>

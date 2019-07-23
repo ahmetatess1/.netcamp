@@ -1,0 +1,16 @@
+﻿@model Catalog.DataAccess.Brand
+@{
+    ViewData["Title"] = "Marka Ekleme Formu";
+}
+
+    <h1>Marka Ekleme Formu <a class="btn btn-info btn-float-right" asp-controller="Brand" asp-action="List">Geri</a></h1>
+
+<form asp-controller="Brand" asp-action="Insert">
+    <div class="form-group">
+        <label>Marka Adı</label>
+        @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <p>@ViewBag.Error</p>
+
+</form>
